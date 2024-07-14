@@ -1,4 +1,4 @@
-// screens/ButtonScreen.js
+
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import CustomButton from '../CustomButton';
