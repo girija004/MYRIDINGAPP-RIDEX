@@ -9,9 +9,9 @@ export default function App() {
   return (
     <View style={styles.container}>
      {/* <Start></Start>*/}
-      {/*} <ButtonScreen></ButtonScreen>*/}
+       <ButtonScreen></ButtonScreen>
   {/*<Login></Login>*/}
-    <SignUp></SignUp>
+   {/* <SignUp></SignUp>*/}
       <StatusBar style="auto" />
     </View>
   );
