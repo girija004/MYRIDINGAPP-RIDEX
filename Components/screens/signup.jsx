@@ -9,7 +9,6 @@ export default function SignUp() {
   const backgroundImage = require('../../assets/ae3a7cfb-925a-49f3-bfdd-bffa67df48b0.jpeg');
 
   const handleSignUp = () => {
-    // Handle the sign-up logic here
     console.log('Sign Up Pressed', { name, email, password, confirmPassword });
   };
 
