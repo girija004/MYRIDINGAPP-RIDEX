@@ -4,14 +4,19 @@ import Start from './Components/screens/start';
 import Login from './Components/screens/login';
 import SignUp from './Components/screens/signup';
 import ButtonScreen from './Components/screens/button'
+import CarpoolingRoleScreen from './Components/ridepoolingscreencard';
+import MainScreen from './Components/screens/CustomTextInputScreen';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-     <Start></Start>
+     {/*<Start></Start>*/}
       {/*} <ButtonScreen></ButtonScreen>*/}
   {/*<Login></Login>*/}
-    {/*<SignUp></SignUp>*/}
+  {/* <SignUp></SignUp>*/}
+   <CarpoolingRoleScreen></CarpoolingRoleScreen>
+    {/*<MainScreen></MainScreen>*/}
       <StatusBar style="auto" />
     </View>
   );
@@ -23,5 +28,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   //alignItems: 'center',
     justifyContent: 'center',
-  },
+    },
 });
