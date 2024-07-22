@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, FlatList } from 'react-native';
 import { Card, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,16 +11,45 @@ const menuItems = [
   { id: '5', title: 'Logout' },
 ];
 
-const renderItem = ({ item }) => (
-  <TouchableOpacity style={styles.menuItem} onPress={() => console.log(`${item.title} Pressed`)}>
-    <Text style={styles.menuItemText}>{item.title}</Text>
-  </TouchableOpacity>
-);
-
 export default function Screencard() {
   const backgroundImage = require('../assets/360364 (1).jpg');
+
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const navigation = useNavigation();
+
+  const handleSearch = () => {
+    console.log('Search Pressed');
+    navigation.navigate('ridegivercard');
+  };
+
+  const handleMenuPress = (id) => {
+    // Navigate to the respective screen based on the menu item id
+    switch (id) {
+      case '1':
+        navigation.navigate('MyRides');
+        break;
+      case '2':
+        navigation.navigate('payment');
+        break;
+      case '3':
+        navigation.navigate('setting');
+        break;
+      case '4':
+        navigation.navigate('help');
+        break;
+      case '5':
+        navigation.navigate('login');
+        break;
+      default:
+        console.log('Unknown menu item');
+    }
+  };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuPress(item.id)}>
+      <Text style={styles.menuItemText}>{item.title}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <PaperProvider>
@@ -61,17 +90,12 @@ export default function Screencard() {
           </TouchableOpacity>
 
           {isMenuVisible && (
-            <View style={styles.menuContainer}>
-              {menuItems.map((item) => (
-                <TouchableOpacity
-                  key={item.id}
-                  style={styles.menuItem}
-                  onPress={() => console.log(`${item.title} Pressed`)}
-                >
-                  <Text style={styles.menuItemText}>{item.title}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
+            <FlatList
+              data={menuItems}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              style={styles.menu}
+            />
           )}
         </ImageBackground>
       </View>
@@ -108,18 +132,15 @@ const styles = StyleSheet.create({
   },
   card: {
     elevation: 4,
-    height: 50,
-    width: 250,
+    height: 200,
+    width: 230,
     alignSelf: 'center',
-    marginBottom: 360,
-    flex: 1,
-    marginTop:10
+    marginBottom: 0,
+    marginTop:40
   },
   firstCard: {
-    marginBottom: 250,
-    height: 50,
-    flex: 1,
-    marginTop:0
+    marginBottom: 20,
+    height: 200,
   },
   cardTitle: {
     fontSize: 20,
@@ -151,7 +172,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-  menuContainer: {
+  menu: {
     position: 'absolute',
     top: 70,
     left: 20,
