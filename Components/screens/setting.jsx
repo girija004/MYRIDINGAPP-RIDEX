@@ -10,7 +10,7 @@ const SettingsScreen = () => {
         <Text style={styles.sectionTitle}>GENERAL</Text>
         <TouchableOpacity style={styles.item}>
           <Text style={styles.itemText}>Profile</Text>
-          <Text style={styles.subText}>+91 9876543210</Text>
+          <Text style={styles.subText}>+91 6120521340</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.item}>
           <Text style={styles.itemText}>Favourites</Text>

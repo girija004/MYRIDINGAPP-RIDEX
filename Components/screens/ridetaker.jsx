@@ -56,89 +56,84 @@ const MatchingRideTakers = () => {
       );
     
 
-    const renderUser = ({ item: user }) => (
-        <View key={user.id} style={styles.card}>
-            <View style={styles.userDetails}>
-                {user.image && (
-                    <Image
-                        style={styles.userImage}
-                        source={{ uri: user.image }}
-                    />
-                )}
-                <View style={styles.userInfo}>
-                    <Text style={styles.userName}>{user.firstName} {user.lastName}</Text>
-                    <Text style={styles.userStatus}>- User Not Verified</Text>
-                    <View style={styles.timeContainer}>
-                        <Ionicons name="time-outline" size={16} color="black" />
-                        <Text style={styles.rideTime}>1:30 pm</Text>
-                    </View>
-                </View>
-            </View>
-            <View style={styles.rideDetails}>
-                <Text style={styles.routeMatch}>Full route match</Text>
-                <View style={styles.rideInfo}>
-                    <Text style={styles.distance}>60 m (1 min)</Text>
-                    <Image
-                        style={styles.carImage}
-                        source={{ uri: 'https://th.bing.com/th/id/OIP.BrvR9-atH0KR2dbpeW0wxAAAAA?rs=1&pid=ImgDetMain' }}
-                    />
-                    <Text style={styles.distance}>50 m (1 min)</Text>
-                </View>
-            </View>
-            <Text style={styles.points}>45 Points</Text>
-            <TouchableOpacity style={styles.requestButton}>
-                <Text style={styles.requestButtonText}>Request a Ride</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.inviteButton}>
-                <Text style={styles.inviteButtonText}>Share with Friends</Text>
-            </TouchableOpacity>
-        </View>
-    );
-
+   
     return (
         <View style={styles.container}>
-            <ImageBackground style={styles.imageBackground} source={backgroundImage}>
-                <View style={styles.headerContainer}>
-                    <TouchableOpacity
-                        style={styles.iconButton}
-                        onPress={() => setIsGridView(!isGridView)}
-                    >
-                        <Ionicons
-                            name={isGridView ? "list" : "grid"}
-                            size={24}
-                            color="black"
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.menuButton}
-                        onPress={() => setIsMenuVisible(!isMenuVisible)}
-                    >
-                        <Text style={styles.menuButtonText}>☰</Text>
-                    </TouchableOpacity>
-                    {isMenuVisible && (
-                        <FlatList
-                            data={menuItems}
-                            renderItem={renderItem}
-                            keyExtractor={(item) => item.id}
-                            style={styles.menu}
-                        />
-                    )}
-                </View>
-                <View style={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.headerText}>Matching Ride Takers</Text>
-                </View>
-                    <FlatList
-                        data={users}
-                        renderItem={renderUser}
-                        keyExtractor={(item) => item.id.toString()}
-                        contentContainerStyle={{ paddingBottom: 20 }}
+        <ImageBackground style={styles.imageBackground} source={backgroundImage}>
+            <View style={styles.headerContainer}>
+                <TouchableOpacity
+                    style={styles.iconButton}
+                    onPress={() => setIsGridView(!isGridView)}
+                >
+                    <Ionicons
+                        name={isGridView ? "list" : "grid"} 
+                        size={24}
+                        color="black"
                     />
-                </View>
-            </ImageBackground>
-        </View>
-    );
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.menuButton}
+                    onPress={() => setIsMenuVisible(!isMenuVisible)}
+                >
+                    <Text style={styles.menuButtonText}>☰</Text>
+                </TouchableOpacity>
+                {isMenuVisible && (
+                    <FlatList
+                        data={menuItems}
+                        renderItem={renderItem}
+                        keyExtractor={(item) => item.id}
+                        style={styles.menu}
+                    />
+                )}
+            </View>
+            <View style={styles.header}>
+                <Text style={styles.headerText}>Matching Ride Takers</Text>
+            </View>
+            <ScrollView contentContainerStyle={isGridView ? styles.gridContainer : styles.listContainer}>
+                {users.map(user => (
+                    <View key={user.id} style={isGridView ? styles.gridCard : styles.card}>
+                        <View style={styles.userDetails}>
+                            {user.image && (
+                                <Image
+                                    style={styles.userImage}
+                                    source={{ uri: user.image }}
+                                />
+                            )}
+                            <View style={styles.userInfo}>
+                                <Text style={styles.userName}>{user.firstName} {user.lastName}</Text>
+                                <Text style={styles.userStatus}>- User Not Verified</Text>
+                                <View style={styles.timeContainer}>
+                                    <Ionicons name="time-outline" size={16} color="black" />
+                                    <Text style={styles.rideTime}>1:30 pm</Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.rideDetails}>
+                            <Text style={styles.routeMatch}>Full route match</Text>
+                            <View style={styles.rideInfo}>
+                                <Text style={styles.distance}>60 m (1 min)</Text>
+                                <Image
+                                    style={styles.carImage}
+                                    source={{ uri: 'https://th.bing.com/th/id/OIP.BrvR9-atH0KR2dbpeW0wxAAAAA?rs=1&pid=ImgDetMain' }}
+                                />
+                                <Text style={styles.distance}>50 m (1 min)</Text>
+                            </View>
+                        </View>
+                        <Text style={styles.points}>45 Points</Text>
+                        <TouchableOpacity style={styles.requestButton}>
+                            <Text style={styles.requestButtonText}>Request to share</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.inviteButton}>
+                            <Text style={styles.inviteButtonText}>Invite your contacts to join the ride</Text>
+                        </TouchableOpacity>
+                    </View>
+                ))}
+            </ScrollView>
+        </ImageBackground>
+    </View>
+);
 };
+
 
 const styles = StyleSheet.create({
     container: {
