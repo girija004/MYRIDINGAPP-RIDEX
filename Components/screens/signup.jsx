@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, ImageBackground, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const backgroundImage = require('../../assets/ae3a7cfb-925a-49f3-bfdd-bffa67df48b0.jpeg');
 
+
   const handleSignUp = () => {
-    console.log('Sign Up Pressed', { name, email, password, confirmPassword });
+    console.log('Sign Up Pressed', { name, email, password, confirmPassword })
+    navigation.navigate('ridepoolingscreencard');
   };
 
   return (
@@ -55,7 +58,12 @@ export default function SignUp() {
             color="#ff7f50"
           />
         </View>
-        <Text style={styles.footerText}>Already have an account? <Text style={styles.loginLink}>Login</Text></Text>
+        <Text style={styles.footerText}>
+          Already have an account?{' '}
+          <Text style={styles.loginLink} onPress={() => navigation.navigate('login')}>
+            Login
+          </Text>
+        </Text>
       </ImageBackground>
     </View>
   );

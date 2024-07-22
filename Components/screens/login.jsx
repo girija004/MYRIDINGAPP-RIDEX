@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Button, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
@@ -40,7 +42,7 @@ export default function Login({ navigation }) {
         </View>
         <Text style={styles.footerText}>
           Don't have an account?{' '}
-          <Text style={styles.signupLink} onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.signupLink} onPress={() => navigation.navigate('signup')}>
             Sign Up
           </Text>
         </Text>

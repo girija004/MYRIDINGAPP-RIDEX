@@ -1,7 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button, Image, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Start() {
+  const navigation = useNavigation();
+  
   const reactlogo = require('../../assets/97640dcbd0db6d3d8de623db02dd72dd.png');
   const reactlogo1 = require('../../assets/ae3a7cfb-925a-49f3-bfdd-bffa67df48b0.jpeg');
   const reactlogo2 = require('../../assets/travelling-vacation-design-illustration-free-png.webp');
@@ -18,18 +21,18 @@ export default function Start() {
 
         <View style={styles.buttonContainer}>
           <Button
-            onPress={() => console.log('BUTTON CLICKED')}
+            onPress={() => navigation.navigate('login')}
             title="LOGIN"
             color="black"
-            accessibilityLabel="Learn more about this purple button"
+            accessibilityLabel="Learn more about this black button"
           />
         </View>
         <View style={styles.buttonContainer1}>
           <Button
-            onPress={() => console.log('BUTTON CLICKED')}
+            onPress={() => navigation.navigate('signup')}
             title="SIGN UP"
             color="black"
-            accessibilityLabel="Learn more about this purple button"
+            accessibilityLabel="Learn more about this black button"
           />
         </View>
         <Text style={[styles.text2, styles.textShadow]}>YOUR FAVOURITE RIDING APP</Text>
@@ -113,7 +116,6 @@ const styles = StyleSheet.create({
   },
   text2: {
     fontSize: 16,
-    
     color: '#ff6347',
     position: 'absolute',
     left: 50,

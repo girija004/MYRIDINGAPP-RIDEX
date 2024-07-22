@@ -1,32 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Start from './Components/screens/start';
-import Login from './Components/screens/login';
-import SignUp from './Components/screens/signup';
-import ButtonScreen from './Components/screens/button'
-import CarpoolingRoleScreen from './Components/ridepoolingscreencard';
-import MainScreen from './Components/screens/CustomTextInputScreen';
-
+// App.js
+import React from 'react';
+import AppNavigator from './Components/appnavigator'; // Adjust the path as needed
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-     {/*<Start></Start>*/}
-      {/*} <ButtonScreen></ButtonScreen>*/}
-  {/*<Login></Login>*/}
-  {/* <SignUp></SignUp>*/}
-   <CarpoolingRoleScreen></CarpoolingRoleScreen>
-    {/*<MainScreen></MainScreen>*/}
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <AppNavigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  //alignItems: 'center',
-    justifyContent: 'center',
-    },
-});
