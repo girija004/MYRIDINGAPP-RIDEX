@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     marginTop: 20,
-    position:'absolute',
-    bottom:190
+  
+  
   },
   signupLink: {
     color: 'black',
