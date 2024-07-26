@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
     backgroundColor: '#fff',
+    marginTop:40
   },
   headerText: {
     fontSize: 20,

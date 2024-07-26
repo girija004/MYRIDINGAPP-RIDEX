@@ -1,16 +1,17 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Image, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { RidesContext } from '../ridecontext'; // Adjust the path as needed
 
-const MatchingRideGivers = () => {
+const MatchingRideTakers = () => {
     const backgroundImage = require('../../assets/ae3a7cfb-925a-49f3-bfdd-bffa67df48b0.jpeg');
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [users, setUsers] = useState([]);
-    const [isGridView, setIsGridView] = useState(false); 
-    const navigation = useNavigation(); 
+    const [isGridView, setIsGridView] = useState(false);
+    const { addRide } = useContext(RidesContext);
+    const navigation = useNavigation();
 
-    
     useEffect(() => {
         fetch('https://dummyjson.com/users')
             .then(res => res.json())
@@ -19,7 +20,8 @@ const MatchingRideGivers = () => {
     }, []);
 
     const menuItems = [
-        { id: '2', title: 'My Rides'},
+        { id: '1', title: 'My Profile' },
+        { id: '2', title: 'My Rides' },
         { id: '3', title: 'Payments' },
         { id: '11', title: 'Settings' },
         { id: '12', title: 'Help' },
@@ -28,32 +30,34 @@ const MatchingRideGivers = () => {
 
     const handleMenuPress = (id) => {
         switch (id) {
-          case '2':
-            navigation.navigate('MyRides');
-            break;
-          case '3':
-            navigation.navigate('payment');
-            break;
-          case '11':
-            navigation.navigate('setting');
-            break;
-          case '12':
-            navigation.navigate('help');
-            break;
-          case '13':
-            navigation.navigate('login');
-            break;
-          default:
-            console.log('Unknown menu item');
+            case '1':
+                navigation.navigate('myprofile');
+                break;
+            case '2':
+                navigation.navigate('myrides');
+                break;
+            case '3':
+                navigation.navigate('payment');
+                break;
+            case '11':
+                navigation.navigate('setting');
+                break;
+            case '12':
+                navigation.navigate('help');
+                break;
+            case '13':
+                navigation.navigate('login');
+                break;
+            default:
+                console.log('Unknown menu item');
         }
-      };
-    
-      const renderItem = ({ item }) => (
+    };
+
+    const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuPress(item.id)}>
-          <Text style={styles.menuItemText}>{item.title}</Text>
+            <Text style={styles.menuItemText}>{item.title}</Text>
         </TouchableOpacity>
-      );
-    
+    );
 
     return (
         <View style={styles.container}>
@@ -64,7 +68,7 @@ const MatchingRideGivers = () => {
                         onPress={() => setIsGridView(!isGridView)}
                     >
                         <Ionicons
-                            name={isGridView ? "list" : "grid"} 
+                            name={isGridView ? "list" : "grid"}
                             size={24}
                             color="black"
                         />
@@ -85,7 +89,7 @@ const MatchingRideGivers = () => {
                     )}
                 </View>
                 <View style={styles.header}>
-                    <Text style={styles.headerText}>Matching Ride Givers</Text>
+                    <Text style={styles.headerText}>Matching Ride Takers</Text>
                 </View>
                 <ScrollView contentContainerStyle={isGridView ? styles.gridContainer : styles.listContainer}>
                     {users.map(user => (
@@ -118,8 +122,18 @@ const MatchingRideGivers = () => {
                                 </View>
                             </View>
                             <Text style={styles.points}>45 Points</Text>
-                            <TouchableOpacity style={styles.requestButton}>
-                                <Text style={styles.requestButtonText}>Request a seat</Text>
+                            <TouchableOpacity 
+                                style={styles.requestButton}
+                                onPress={() => addRide({
+                                    id: user.id,
+                                    time: '1:30 PM', // You can update this to actual ride time
+                                    from: 'WHITEFIELD', // Update with actual source
+                                    to: 'ELECTRONIC CITY', // Update with actual destination
+                                    status: 'Waiting for confirmation',
+                                    payment:'Payment:PHONEPE'
+                                })}
+                            >
+                                <Text style={styles.requestButtonText}>Request to share</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.inviteButton}>
                                 <Text style={styles.inviteButtonText}>Invite your contacts to join the ride</Text>
@@ -159,7 +173,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f8f8f8',
         borderBottomWidth: 1,
         borderBottomColor: '#ddd',
-        zIndex: 1, 
+        zIndex: 1,
     },
     headerText: {
         fontSize: 20,
@@ -187,7 +201,7 @@ const styles = StyleSheet.create({
     },
     gridCard: {
         backgroundColor: '#f9f9f9',
-        width: '45%', 
+        width: '45%',
         margin: 5,
         borderRadius: 10,
         padding: 10,
@@ -196,6 +210,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 3,
         elevation: 5,
+        alignItems: 'center', // Center items in grid view
     },
     userDetails: {
         flexDirection: 'row',
@@ -229,8 +244,8 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     rideDetails: {
-        marginTop: 10,
-        alignItems: 'center',
+        alignItems: 'center', // Center items in grid view
+        marginBottom: 10,
     },
     routeMatch: {
         fontSize: 16,
@@ -238,7 +253,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     rideInfo: {
-        flexDirection: 'row',
+        flexDirection: 'column', // Arrange distance and car image in column
         alignItems: 'center',
     },
     distance: {
@@ -248,7 +263,7 @@ const styles = StyleSheet.create({
     carImage: {
         width: 50,
         height: 50,
-        marginHorizontal: 10,
+        marginVertical: 10, // Add vertical margin to space elements in column
     },
     points: {
         fontSize: 16,
@@ -256,62 +271,66 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     requestButton: {
-        backgroundColor: '#376D21',
+        backgroundColor: '#4caf50',
+        borderRadius: 5,
         padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
         marginTop: 10,
     },
     requestButtonText: {
-        color: '#ffffff',
-        fontSize: 16,
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: 'bold',
     },
     inviteButton: {
-        backgroundColor: '#4caf50',
+        backgroundColor: '#f44336',
+        borderRadius: 5,
         padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
         marginTop: 10,
     },
     inviteButtonText: {
-        color: '#ffffff',
-        fontSize: 16,
-    },
-    iconButton: {
-        zIndex: 3,
-        position:'absolute',
-        right:8,
-        top:14
-    },
-    menuButton: {
-        backgroundColor: '#ff7f50',
-        padding: 10,
-        borderRadius: 5,
-        position: 'absolute',
-        top: 10,
-        left: 10,
-        zIndex: 3, 
-    },
-    menuButtonText: {
-        color: 'white',
+        color: '#fff',
+        textAlign: 'center',
         fontWeight: 'bold',
     },
-    menu: {
-        position: 'absolute',
-        top: 50, 
-        left: 10,
+    iconButton: {
         backgroundColor: '#fff',
         borderRadius: 5,
         padding: 10,
         elevation: 5,
-        zIndex: 2, 
+        position: 'absolute',
+        top: 50,
+        right: 15,
+    },
+    menuButton: {
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        padding: 10,
+        elevation: 5,
+        position: 'absolute',
+        left: 20,
+        top: 40,
+    },
+    menuButtonText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+    menu: {
+        backgroundColor: '#fff',
+        position: 'absolute',
+        top: 100,
+        left: 15,
+        borderRadius: 5,
+        elevation: 5,
+        zIndex: 3,
     },
     menuItem: {
-        padding: 10,
+        padding: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
     },
     menuItemText: {
         fontSize: 16,
     },
 });
 
-export default MatchingRideGivers;
+export default MatchingRideTakers;

@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     marginBottom: 20,
-    fontFamily: 'McLaren-Regular',
+    //fontFamily: 'McLaren-Regular',
     position: 'absolute',
     top: 95,
     width: 130,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: '#191970',
     textAlign: 'center',
     marginBottom: 17,
-    fontFamily: 'McLaren-Regular',
+   // fontFamily: 'McLaren-Regular',
     position: 'absolute',
     bottom: 60,
     right:35
@@ -112,13 +112,13 @@ const styles = StyleSheet.create({
     width: 110,
     height: 110,
     position: 'absolute',
-    top: 130
+    top: 160
   },
   text2: {
     fontSize: 16,
     color: '#ff6347',
     position: 'absolute',
-    left: 50,
+    left: 70,
     right: 30,
     top: 125,
     fontWeight: 'Bold',
@@ -128,6 +128,8 @@ const styles = StyleSheet.create({
   textShadow: {
     textShadowColor: '#000',
     textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 5,
+    textShadowRadius: 30,
+    position:'absolute',
+    top:140
   },
 });

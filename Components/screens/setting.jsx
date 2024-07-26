@@ -37,9 +37,6 @@ const SettingsScreen = () => {
           <Text style={styles.subText}>Get early access to latest features</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.item}>
-          <Text style={styles.itemText}>Logout</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.item}>
           <Text style={styles.itemText}>Delete Account</Text>
         </TouchableOpacity>
       </View>
@@ -57,6 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    marginTop: 30
   },
   section: {
     marginBottom: 20,

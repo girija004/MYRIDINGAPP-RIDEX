@@ -1,51 +1,35 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { TextInput, StyleSheet, View, Text } from 'react-native';
 
-const CustomTextInput = ({ label, placeholder, iconName, containerStyle, inputStyle, labelStyle, ...props }) => {
+const CustomTextInput = ({ placeholder, label }) => {
   return (
-    <View style={[styles.container, containerStyle]}>
-      {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
-      <View style={styles.inputContainer}>
-        {iconName && <MaterialIcons name={iconName} size={24} style={styles.icon} />}
-        <TextInput
-          style={[styles.input, inputStyle]}
-          placeholder={placeholder}
-          placeholderTextColor="#999"
-          
-        />
-      </View>
+    <View style={styles.inputContainer}>
+      {label && <Text style={styles.label}>{label}</Text>}
+      <TextInput
+        placeholder={placeholder}
+        style={styles.input}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: 5,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderColor: '#ccc',
-    borderWidth:2,
-    borderRadius: 15,
-  },
-  icon: {
-    marginRight: 10,
-    color: '#333',
+    marginVertical: 10,
   },
   input: {
-    flex: 1,
     height: 40,
-    color: '#333',
+    borderColor: '#000',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    backgroundColor: 'white',
   },
+  label: {
+    marginBottom: 5,
+    fontSize: 16,
+    fontWeight: 'bold',
+  }
 });
 
 export default CustomTextInput;

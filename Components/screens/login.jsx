@@ -5,11 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
+ // const navigation = useNavigation(); 
+
   const [password, setPassword] = useState('');
   const backgroundImage = require('../../assets/ae3a7cfb-925a-49f3-bfdd-bffa67df48b0.jpeg');
 
   const handleLogin = () => {
-    console.log('Login Pressed');
+    window.alert('Login Successful');
+    navigation.navigate('ridepoolingscreencard')
   };
 
   return (
@@ -20,7 +23,7 @@ export default function Login({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="#aaa"
+          placeholderTextColor="black"
           keyboardType="email-address"
           value={email}
           onChangeText={setEmail}
@@ -28,7 +31,7 @@ export default function Login({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#aaa"
+          placeholderTextColor="black"
           secureTextEntry={true}
           value={password}
           onChangeText={setPassword}
@@ -71,19 +74,19 @@ const styles = StyleSheet.create({
     textShadowRadius: 5,
     textAlign: 'center',
     marginBottom: 20,
-    fontFamily: 'McLaren-Regular',
+    //fontFamily: 'McLaren-Regular',
   },
   subtitle: {
     fontSize: 18,
     color: '#191970',
     textAlign: 'center',
     marginBottom: 40,
-    fontFamily: 'McLaren-Regular',
+    
   },
   input: {
     width: '80%',
     height: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: '#d3d3d3',
     borderRadius: 10,
     paddingHorizontal: 15,
     fontSize: 16,
@@ -99,6 +102,8 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     marginTop: 20,
+    position:'absolute',
+    bottom:190
   },
   signupLink: {
     color: 'black',

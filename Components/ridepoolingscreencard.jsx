@@ -4,11 +4,12 @@ import { Card, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
 const menuItems = [
-  { id: '1', title: 'My Rides' },
-  { id: '2', title: 'Payments' },
-  { id: '3', title: 'Settings' },
-  { id: '4', title: 'Help' },
-  { id: '5', title: 'Logout' },
+  { id: '1', title: 'My Profile' },
+  { id: '2', title: 'My Rides' },
+  { id: '3', title: 'Payments' },
+  { id: '4', title: 'Settings' },
+  { id: '5', title: 'Help' },
+  { id: '6', title: 'Logout' },
 ];
 
 export default function Screencard() {
@@ -26,18 +27,21 @@ export default function Screencard() {
     // Navigate to the respective screen based on the menu item id
     switch (id) {
       case '1':
-        navigation.navigate('MyRides');
+        navigation.navigate('myprofile');
         break;
       case '2':
-        navigation.navigate('payment');
+        navigation.navigate('myrides');
         break;
       case '3':
-        navigation.navigate('setting');
+        navigation.navigate('payment');
         break;
       case '4':
-        navigation.navigate('help');
+        navigation.navigate('setting');
         break;
       case '5':
+        navigation.navigate('help');
+        break;
+      case '6':
         navigation.navigate('login');
         break;
       default:
@@ -61,7 +65,7 @@ export default function Screencard() {
           <View style={styles.cardContainer}>
             <Card
               style={[styles.firstCard]}
-              onPress={() => navigation.navigate('sourcedestscreentaker')}
+              onPress={() => navigation.navigate('mapscreentaker')}
             >
               <Card.Cover source={{ uri: 'https://images.pexels.com/photos/3652766/pexels-photo-3652766.jpeg?cs=srgb&dl=man-in-black-jacket-waiting-for-a-taxi-cab-3652766.jpg&fm=jpg' }} />
               <Card.Content>
@@ -72,7 +76,7 @@ export default function Screencard() {
 
             <Card
               style={styles.card}
-              onPress={() => navigation.navigate('sourcedestscreengiver')}
+              onPress={() => navigation.navigate('mapscreengiver')}
             >
               <Card.Cover source={{ uri: 'https://i.pinimg.com/originals/f1/c4/1b/f1c41baccd8b90b7ef5e2d65d1accfb6.jpg' }} />
               <Card.Content>
@@ -114,7 +118,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: 'white',
     position: 'absolute',
-    top: 60,
+    top: 75,
     left: 40,
   },
   subtitle: {
@@ -123,7 +127,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     color: 'white',
     position: 'absolute',
-    top: 100,
+    top: 115,
     left: 90,
   },
   cardContainer: {
@@ -132,15 +136,16 @@ const styles = StyleSheet.create({
   },
   card: {
     elevation: 4,
-    height: 200,
+    height: 180,
     width: 230,
     alignSelf: 'center',
     marginBottom: 0,
-    marginTop:40
+    marginTop:30
   },
   firstCard: {
-    marginBottom: 20,
-    height: 200,
+    marginBottom: 100,
+    height: 180,
+    marginTop:20
   },
   cardTitle: {
     fontSize: 20,
@@ -165,7 +170,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     position: 'absolute',
-    top: 10,
+    top: 40,
     left: 8,
   },
   menuButtonText: {
@@ -174,7 +179,7 @@ const styles = StyleSheet.create({
   },
   menu: {
     position: 'absolute',
-    top: 70,
+    top: 90,
     left: 20,
     backgroundColor: '#fff',
     borderRadius: 5,

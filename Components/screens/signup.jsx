@@ -23,14 +23,14 @@ export default function SignUp({navigation}) {
         <TextInput
           style={styles.input}
           placeholder="Name"
-          placeholderTextColor="#aaa"
+          placeholderTextColor="black"
           value={name}
           onChangeText={setName}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="#aaa"
+          placeholderTextColor="black"
           keyboardType="email-address"
           value={email}
           onChangeText={setEmail}
@@ -38,15 +38,16 @@ export default function SignUp({navigation}) {
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#aaa"
+          placeholderTextColor="black"
           secureTextEntry={true}
           value={password}
+
           onChangeText={setPassword}
         />
         <TextInput
           style={styles.input}
           placeholder="Confirm Password"
-          placeholderTextColor="#aaa"
+          placeholderTextColor="black"
           secureTextEntry={true}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
@@ -89,23 +90,24 @@ const styles = StyleSheet.create({
     textShadowRadius: 5,
     textAlign: 'center',
     marginBottom: 20,
-    fontFamily: 'McLaren-Regular',
+    
   },
   subtitle: {
     fontSize: 18,
     color: '#191970',
     textAlign: 'center',
     marginBottom: 40,
-    fontFamily: 'McLaren-Regular',
+  
   },
   input: {
     width: '80%',
     height: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: '#d3d3d3',
     borderRadius: 10,
     paddingHorizontal: 15,
     fontSize: 16,
     marginBottom: 20,
+    elevation:10,
   },
   buttonContainer: {
     width: '80%',

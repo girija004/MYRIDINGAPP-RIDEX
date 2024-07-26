@@ -14,6 +14,13 @@ import  MatchingRideTakers from './screens/ridetaker';
 import PaymentScreen from './screens/payment'
 import SettingsScreen from './screens/setting';
 import HelpScreen from './screens/help';
+import Mapscreengiver from './screens/mapscreengiver';
+import MapScreen from './screens/mapscreentaker';
+import MyRidesScreen from './screens/myrides';
+import Profile from './screens/myprofile';
+import {RidesContext} from './ridecontext';
+
+
 const Stack = createNativeStackNavigator();
 
 function AppNavigator() {
@@ -31,6 +38,12 @@ function AppNavigator() {
                 <Stack.Screen name="payment" component={PaymentScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="setting" component={SettingsScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="help" component={HelpScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="mapscreengiver" component={Mapscreengiver} options={{ headerShown: false }} />
+                <Stack.Screen name="mapscreentaker" component={MapScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="myrides" component={MyRidesScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="myprofile" component={Profile} options={{ headerShown: false }} />
+
+
 
 
 

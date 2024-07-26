@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, ImageBackground, TouchableOpacity, Button, FlatList } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const rides = [
   { id: 1, time: '9:00 AM', from: 'Home', to: 'Office', matches: 'Match found' },
@@ -16,8 +17,6 @@ const menuItems = [
   { id: '13', title: 'Logout' },
 ];
 
-
-
 const RideCard = ({ time, from, to, matches }) => (
   <TouchableOpacity style={styles.card}>
     <Text style={styles.time}>{time}</Text>
@@ -28,9 +27,9 @@ const RideCard = ({ time, from, to, matches }) => (
 
 export default function Sourcedesttaker() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
+
   const handleMenuPress = (id) => {
-    // Navigate to the respective screen based on the menu item id
     switch (id) {
       case '2':
         navigation.navigate('MyRides');
@@ -64,50 +63,52 @@ export default function Sourcedesttaker() {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <ImageBackground source={require('../../assets/EV.png')} style={styles.background}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>"You are helping to reduce traffic congestion inside the city"</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="📍Enter Pickup Location"
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="📍Enter Drop Location"
-          />
-          <View style={styles.buttonContainer}>
-            <Button
-              onPress={handle}
-              title="SEARCH"
-              color="#ff7f50"
-            />
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <ImageBackground source={require('../../assets/EV.png')} style={styles.background}>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>"You are helping to reduce traffic congestion inside the city"</Text>
           </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Pickup Location"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Drop Location"
+            />
+            <View style={styles.buttonContainer}>
+              <Button
+                onPress={handle}
+                title="SEARCH"
+                color="#ff7f50"
+              />
+            </View>
+          </View>
+          <TouchableOpacity
+            style={styles.menuButton}
+            onPress={() => setIsMenuVisible(!isMenuVisible)}
+          >
+            <Text style={styles.menuButtonText}>☰</Text>
+          </TouchableOpacity>
+          {isMenuVisible && (
+            <FlatList
+              data={menuItems}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              style={styles.menu}
+            />
+          )}
+        </ImageBackground>
+        <View style={styles.upcomingRides}>
+          <Text style={styles.sectionTitle}>Upcoming Rides</Text>
+          {rides.map(ride => (
+            <RideCard key={ride.id} {...ride} />
+          ))}
         </View>
-        <TouchableOpacity
-          style={styles.menuButton}
-          onPress={() => setIsMenuVisible(!isMenuVisible)}
-        >
-          <Text style={styles.menuButtonText}>☰</Text>
-        </TouchableOpacity>
-        {isMenuVisible && (
-          <FlatList
-            data={menuItems}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            style={styles.menu}
-          />
-        )}
-      </ImageBackground>
-      <View style={styles.upcomingRides}>
-        <Text style={styles.sectionTitle}>Upcoming Rides</Text>
-        {rides.map(ride => (
-          <RideCard key={ride.id} {...ride} />
-        ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -118,43 +119,39 @@ const styles = StyleSheet.create({
   background: {
     width: '100%',
     height: 270,
-    position: 'absolute',
-    top: -37,
     resizeMode: 'cover',
     justifyContent: 'center',
   },
   header: {
     padding: 20,
+    position: 'absolute',
+    top: 140,
+    left: 0,
+    right: 0,
   },
   headerText: {
     fontSize: 16,
     textAlign: 'center',
-    color: 'black',
-    position: 'absolute',
-    top: 140,
-    boxShadow: '0px 4px 6px rgba(0,0,0,0.1)',
-    backgroundColor: 'gray',
     color: 'white',
-    left: 0,
+    backgroundColor: 'gray',
+    padding: 10,
     fontWeight: 'bold',
+    borderRadius: 5,
   },
   buttonContainer: {
-    width: 100,
-    height: 10,
-    marginLeft: 110,
+    width: '100%',
     marginTop: 10,
+    alignItems: 'center',
   },
   inputContainer: {
     padding: 15,
     backgroundColor: '#fff',
     marginHorizontal: 10,
     borderRadius: 5,
-    marginTop: 200,
-    boxShadow: '0px 4px 6px rgba(0,0,0,0.1)',
-    position: 'absolute',
-    top: 120,
-    width: '100%',
-    height: 200,
+    marginTop: 150,
+    elevation: 3,
+    width: '90%',
+    alignSelf: 'center',
   },
   input: {
     height: 50,
@@ -164,34 +161,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 8,
     backgroundColor: '#f9f9f9',
-    elevation: 3,
-    width: 300,
-    marginLeft: 20,
+    width: '100%',
   },
   upcomingRides: {
     backgroundColor: '#fff',
-    flexDirection: 'row',
-    position: 'absolute',
-    top: 540,
+    padding: 10,
+    marginTop: 20,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    position: 'absolute',
-    bottom: 130,
-    left: 120,
+    marginBottom: 10,
   },
   card: {
     backgroundColor: '#fff',
     padding: 13,
-    marginBottom: 20,
+    marginBottom: 10,
     borderRadius: 8,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
-    display: 'flex',
-    marginLeft: 5,
   },
   time: {
     fontSize: 16,
@@ -210,7 +200,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     position: 'absolute',
-    top: 50,
+    top: 10,
     left: 10,
   },
   menuButtonText: {
@@ -219,12 +209,13 @@ const styles = StyleSheet.create({
   },
   menu: {
     position: 'absolute',
-    top: 100,
-    left: 20,
+    top: 50,
+    left: 10,
     backgroundColor: '#fff',
     borderRadius: 5,
     padding: 10,
     elevation: 5,
+    zIndex: 2,
   },
   menuItem: {
     padding: 10,
