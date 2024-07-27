@@ -163,14 +163,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 20,
-        backgroundColor: '#e6f1ff',
+        backgroundColor: 'black',
         borderRadius: 8,
         padding: 15,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 6,
-        elevation: 1,
+        elevation: 4,
     },
     profileContainer: {
         flexDirection: 'row',
@@ -198,7 +194,7 @@ const styles = StyleSheet.create({
     },
     numberOfRides: {
         fontSize: 16,
-        color: '#333',
+        color: 'white',
         fontWeight: 'bold',
         marginLeft: 15,
     },
@@ -206,10 +202,7 @@ const styles = StyleSheet.create({
        // backgroundColor: '#75c112',
         borderRadius: 8,
         padding: 20,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 6,
+        
         elevation: 1,
     },
     item: {
@@ -219,12 +212,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ddd',
         borderRadius: 8,
-        backgroundColor: '#3850eb4e',
+        backgroundColor: 'black',
         marginBottom: 15,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 6,
+       
         elevation: 1,
         flexWrap: 'wrap', 
     },
@@ -235,7 +225,7 @@ const styles = StyleSheet.create({
     label: {
         flex: 1,
         fontSize: 16,
-        color: '#555',
+        color: 'white',
     },
     valueEdit: {
         flex: 2,
@@ -245,7 +235,7 @@ const styles = StyleSheet.create({
     },
     value: {
         fontSize: 16,
-        color: '#100f13',
+        color: 'white',
     },
     inputField: {
         backgroundColor: '#ffffff',

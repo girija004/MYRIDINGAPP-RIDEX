@@ -1,6 +1,6 @@
 import React from 'react';
-import { RidesProvider } from './Components/ridecontext'; // Adjust the path as needed
-import AppNavigator from './Components/appnavigator'; // Adjust the path as needed
+import { RidesProvider } from './Components/ridecontext'; 
+import AppNavigator from './Components/appnavigator'; 
 
 export default function App() {
     return (

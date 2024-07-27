@@ -24,7 +24,7 @@ export default function Screencard() {
   };
 
   const handleMenuPress = (id) => {
-    // Navigate to the respective screen based on the menu item id
+    
     switch (id) {
       case '1':
         navigation.navigate('myprofile');

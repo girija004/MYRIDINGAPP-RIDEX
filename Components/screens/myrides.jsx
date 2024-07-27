@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { RidesContext } from '../ridecontext'; // Update the path if necessary
+import { RidesContext } from '../ridecontext'; 
 
 const MyRidesScreen = () => {
     const { rides, setRides } = useContext(RidesContext);

@@ -3,10 +3,10 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Start from './screens/start'; // Adjust the path as needed
-import Login from './screens/login'; // Adjust the path as needed
-import SignUp from './screens/signup'; // Adjust the path as needed
-import Screencard from './ridepoolingscreencard'; // Adjust the path as needed
+import Start from './screens/start'; 
+import Login from './screens/login'; 
+import SignUp from './screens/signup'; 
+import Screencard from './ridepoolingscreencard'; 
 import Sourcedesttaker from './screens/sourcedestscreentaker';
 import RideGiverCard from './screens/ridegivercard';
 import Sourcedestgiver from './screens/sourcedestscreengiver';

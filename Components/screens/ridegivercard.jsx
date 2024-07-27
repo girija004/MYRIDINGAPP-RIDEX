@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Image, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RidesContext } from '../ridecontext'; // Adjust the path as needed
+import { RidesContext } from '../ridecontext'; 
 
 const MatchingRideTakers = () => {
     const backgroundImage = require('../../assets/ae3a7cfb-925a-49f3-bfdd-bffa67df48b0.jpeg');
@@ -126,9 +126,9 @@ const MatchingRideTakers = () => {
                                 style={styles.requestButton}
                                 onPress={() => addRide({
                                     id: user.id,
-                                    time: '1:30 PM', // You can update this to actual ride time
-                                    from: 'WHITEFIELD', // Update with actual source
-                                    to: 'ELECTRONIC CITY', // Update with actual destination
+                                    time: '1:30 PM', 
+                                    from: 'WHITEFIELD', 
+                                    to: 'ELECTRONIC CITY', 
                                     status: 'Waiting for confirmation',
                                     payment:'Payment:PHONEPE'
                                 })}
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 3,
         elevation: 5,
-        alignItems: 'center', // Center items in grid view
+        alignItems: 'center', 
     },
     userDetails: {
         flexDirection: 'row',
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     rideDetails: {
-        alignItems: 'center', // Center items in grid view
+        alignItems: 'center', 
         marginBottom: 10,
     },
     routeMatch: {
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     rideInfo: {
-        flexDirection: 'column', // Arrange distance and car image in column
+        flexDirection: 'column', 
         alignItems: 'center',
     },
     distance: {
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     carImage: {
         width: 50,
         height: 50,
-        marginVertical: 10, // Add vertical margin to space elements in column
+        marginVertical: 10, 
     },
     points: {
         fontSize: 16,

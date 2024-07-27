@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Image, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RidesContext } from '../ridecontext'; // Adjust the path as needed
+import { RidesContext } from '../ridecontext'; 
 
 const MatchingRideTakers = () => {
     const backgroundImage = require('../../assets/ae3a7cfb-925a-49f3-bfdd-bffa67df48b0.jpeg');
@@ -126,9 +126,9 @@ const MatchingRideTakers = () => {
                                 style={styles.requestButton}
                                 onPress={() => addRide({
                                     id: user.id,
-                                    time: '1:30 PM', // You can update this to actual ride time
-                                    from: 'WHITEFIELD', // Update with actual source
-                                    to: 'ELECTRONIC CITY', // Update with actual destination
+                                    time: '1:30 PM', 
+                                    from: 'WHITEFIELD', 
+                                    to: 'ELECTRONIC CITY', 
                                     status: 'Waiting for confirmation',
                                     payment:'Payment:PHONEPE'
                                 })}
