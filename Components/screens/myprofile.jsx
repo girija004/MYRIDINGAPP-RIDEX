@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
        // color: '#ffffff',
         textAlign: 'center',
         fontWeight: 'bold',
+        marginTop:15
     },
     profileSection: {
         flexDirection: 'row',
